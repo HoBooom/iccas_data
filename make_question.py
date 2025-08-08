@@ -32,7 +32,7 @@ You are an expert in creating quiz data for the treatment of dyscalculia.
 
 ### Input (20 JSON questions)
 ```json
-quizzes
+{quizzes}
 ````
 
 ### Instructions
