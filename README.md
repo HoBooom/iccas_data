@@ -24,33 +24,6 @@
 - **레벨 변환**: θ 값을 1-30 레벨로 변환하여 직관적 표현
 - **시간 고려**: 풀이 시간을 반영한 정확한 능력 평가
 
-## 📁 프로젝트 구조
-
-```
-question_temp/
-├── README.md                    # 프로젝트 문서
-├── requirements.txt             # Python 의존성
-├── .gitignore                   # Git 무시 파일
-├── question_temp.code-workspace # VS Code 워크스페이스 설정
-│
-├── 📊 데이터 파일
-├── quiz_data.json              # 원본 퀴즈 데이터 (1,214개)
-├── new_quiz_data.json          # AI 생성 퀴즈 데이터 (146개)
-├── quiz_similarity_results.json # 유사도 검증 결과
-├── qna_200_list.csv            # 난산증 관련 Q&A 데이터
-│
-├── 🧠 핵심 알고리즘
-├── set_level.py                # Rasch 모델 기반 적응형 엔진
-├── quiz_similarity.py          # 퀴즈 유사도 분석
-│
-├── 🤖 AI 퀴즈 생성
-├── make_question.py            # Gemini API를 통한 퀴즈 생성
-│
-├── 🖥️ 사용자 인터페이스
-├── debug_cli.py                # CLI 기반 퀴즈 테스트 도구
-│
-└── venv/                       # Python 가상환경
-```
 
 ## 🔧 설치 및 설정
 
@@ -78,8 +51,6 @@ echo "GEMINI_API_KEY=your_api_key_here" > .env
 ```
 google-generativeai  # Gemini API
 sentence-transformers # 유사도 분석
-python-dotenv        # 환경변수 관리
-numpy               # 수치 계산
 ```
 
 ## 🚀 사용 방법
@@ -257,25 +228,6 @@ def theta_to_level(theta):
 | `TAU` | 10.0 | 시간 패널티 완화 계수 |
 | `TARGET_P` | 0.70 | 목표 정답률 |
 
-### 5. 수학적 배경
-
-#### 5.1 Sigmoid 함수
-```
-sigmoid(x) = 1 / (1 + exp(-x))
-```
-
-#### 5.2 Hyperbolic Tangent
-```
-tanh(x) = (exp(x) - exp(-x)) / (exp(x) + exp(-x))
-```
-
-#### 5.3 시간 가중 정답률
-```
-r' = α × correct - (1-α) × tanh(t/τ)
-```
-- α: 정답 가중치
-- t: 풀이 시간
-- τ: 시간 패널티 상수
 
 ## 📚 사용된 오픈소스 라이브러리
 
@@ -305,24 +257,10 @@ r' = α × correct - (1-α) × tanh(t/τ)
 - **적응형 테스트**: Computerized Adaptive Testing (CAT) 이론 적용
 - **문장 임베딩**: Sen tence-BERT 모델 활용
 
-## 📊 성능 지표
-
-### 시스템 성능
-- **적응 정확도**: 목표 정답률 70% 달성
-- **처리 속도**: 실시간 퀴즈 선택 및 평가 (< 100ms)
-- **확장성**: 1,000+ 퀴즈 데이터베이스 지원
-- **메모리 사용량**: < 500MB (일반적인 사용 환경)
-
-### 알고리즘 성능
-- **수렴 속도**: 평균 10-15개 퀴즈 후 안정적 능력 추정
-- **정확도**: θ 추정 오차 < 0.3 (표준편차 기준)
-- **유사도 검증**: 95% 이상의 중복 퀴즈 필터링 성공률
-
 ## 🎯 타겟 사용자
-
 - **주요 대상**: 6-12세 난산증 아동
 - **보조 사용자**: 부모, 교사, 치료사
-- **시장 규모**: OECD 회원국 아동의 3-7% (약 1,000만 명 이상)
+- **시장 규모**: OECD 회원국 아동의 3-7% 
 
 ## 🔬 기술적 특징
 
@@ -336,16 +274,6 @@ r' = α × correct - (1-α) × tanh(t/τ)
 - 다국어 퀴즈 생성
 - 유사도 기반 중복 제거
 
-### 3. 데이터 관리
-- JSON 기반 구조화된 데이터 저장
-- 버전 관리 및 백업 지원
-- 확장 가능한 데이터 구조
-
-### 기여 가이드라인
-- 코드 스타일: PEP 8 준수
-- 테스트: 새로운 기능에 대한 테스트 코드 작성
-- 문서화: 코드 주석 및 README 업데이트
-- 라이선스: 기여 코드는 MIT 라이선스 하에 제공
 
 ## 📄 라이선스
 
